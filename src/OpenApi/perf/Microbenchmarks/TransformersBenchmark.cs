@@ -73,7 +73,7 @@ public class TransformersBenchmark : OpenApiDocumentServiceTestBase
         {
             _options.UseSchemaTransformer((schema, context, token) =>
             {
-                if (context.Type == typeof(Todo) && context.ParameterDescription != null)
+                if (context.JsonTypeInfo.Type == typeof(Todo) && context.ParameterDescription != null)
                 {
                     schema.Extensions["x-my-extension"] = new OpenApiString(context.ParameterDescription.Name);
                 }

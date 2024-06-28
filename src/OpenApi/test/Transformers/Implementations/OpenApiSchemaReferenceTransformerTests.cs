@@ -269,7 +269,7 @@ public class OpenApiSchemaReferenceTransformerTests : OpenApiDocumentServiceTest
         var options = new OpenApiOptions();
         options.UseSchemaTransformer((schema, context, cancellationToken) =>
         {
-            if (context.Type == typeof(Todo) && context.ParameterDescription is not null)
+            if (context.JsonTypeInfo.Type == typeof(Todo) && context.ParameterDescription is not null)
             {
                 schema.Extensions["x-my-extension"] = new OpenApiString(context.ParameterDescription.Name);
             }
